@@ -37,3 +37,12 @@ download and replace oracle-linux-ol7.repo:
 $ sudo curl -L -o /etc/yum.repos.d/oracle-linux-ol7.repo \
     http://public-yum.oracle.com/public-yum-ol7.repo
 ```
+
+## Kollacli command
+
+https://docs.oracle.com/cd/E64747_01/E64749/html/osusg-kollacli-commands.html#osusg-kollacli-host-add
+
+Setup on multiple PC/Server need to use remote (not local)
+```shell
+$ kollacli setdeploy remote
+```
