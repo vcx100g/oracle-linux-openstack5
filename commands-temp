@@ -21,11 +21,8 @@ sudo ./import_to_registry.sh -c masternode.localdomain:5000
 
 kollacli deploy
 
-## create cert directory folder
-sudo mkdir -p /etc/docker/certs.d/masternode.localdomain:5000/
-sudo chown kolla:kolla -R /etc/docker/certs.d/masternode.localdomain:5000/
 
-## Create own cert
+## 
 mkdir -p /etc/docker/certs.d/masternode.localdomain:5000
 
 
@@ -39,6 +36,7 @@ $ cp /var/lib/registry/conf.d/domain.crt /etc/docker/certs.d/masternode.localdom
 
 ## Copy the ca.crt file to all master and target nodes
 
+if master node do not have cert
 sudo scp /etc/docker/certs.d/masternode.localdomain:5000/ca.crt root@masternode:/etc/docker/certs.d/masternode.localdomain:5000/ca.crt
 
 sudo scp /etc/docker/certs.d/masternode.localdomain:5000/ca.crt root@targetnode1:/etc/docker/certs.d/masternode.localdomain:5000/ca.crt
@@ -53,4 +51,4 @@ sudo docker run -d -p 5000:5000 --name registry --restart=always \
     -e REGISTRY_HTTP_TLS_CERTIFICATE=/registry_data/conf.d/domain.crt \
     registry:2
 
-sudo ./import_to_registry.sh -c masternode:5000
+sudo ./import_to_registry.sh -c masternode.localdomain:5000
