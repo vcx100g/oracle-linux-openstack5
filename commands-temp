@@ -1,0 +1,53 @@
+kollacli host add targetnode1.localdomain
+
+kollacli group addhost control targetnode1
+kollacli group addhost control targetnode2
+kollacli group addhost database targetnode1
+kollacli group addhost database targetnode2
+kollacli group addhost network targetnode1
+kollacli group addhost network targetnode2
+kollacli group addhost storage targetnode1
+kollacli group addhost storage targetnode2
+kollacli group addhost compute targetnode1
+kollacli group addhost compute targetnode2
+
+# until here
+kollacli host setup targetnode1
+kollacli host setup targetnode2
+
+kollacli property set docker_registry masternode:5000
+
+sudo ./import_to_registry.sh -c masternode:5000
+
+kollacli deploy
+
+
+## 
+mkdir -p /etc/docker/certs.d/masternode:5000
+
+
+mkdir -p /var/lib/registry/conf.d
+$ cd /var/lib/registry/conf.d
+$ openssl req -newkey rsa:4096 -nodes -sha256 -keyout domain.key -x509 -days 365 -out domain.crt 
+$ chmod 600 domain.key
+$ mkdir -p /etc/docker/certs.d/masternode:5000
+$ cp /var/lib/registry/conf.d/domain.crt /etc/docker/certs.d/masternode:5000/ca.crt
+
+
+## Copy the ca.crt file to all master and target nodes
+
+sudo scp /etc/docker/certs.d/masternode:5000/ca.crt root@masternode:/etc/docker/certs.d/masternode:5000/ca.crt
+
+sudo scp /etc/docker/certs.d/masternode:5000/ca.crt root@targetnode1:/etc/docker/certs.d/masternode:5000/ca.crt
+
+sudo scp /etc/docker/certs.d/masternode:5000/ca.crt root@targetnode2:/etc/docker/certs.d/masternode:5000/ca.crt
+
+## run
+sudo docker run -d -p 5000:5000 --name registry --restart=always \
+    -v /var/lib/registry:/registry_data \
+    -e REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/registry_data \
+    -e REGISTRY_HTTP_TLS_KEY=/registry_data/conf.d/domain.key \
+    -e REGISTRY_HTTP_TLS_CERTIFICATE=/registry_data/conf.d/domain.crt \
+    registry:2
+
+sudo ./import_to_registry.sh -c masternode:5000
