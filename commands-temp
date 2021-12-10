@@ -38,7 +38,7 @@ $ cp /var/lib/registry/conf.d/domain.crt /etc/docker/certs.d/masternode:5000/ca.
 
 go to each master or target node
 sudo mkdir -p /etc/docker/certs.d/masternode:5000/
-sudo chown kolla:kolla -R /etc/docker/certs.d/masternode:500/
+sudo chown kolla:kolla -R /etc/docker/certs.d/masternode:5000/
 
 sudo scp /etc/docker/certs.d/masternode:5000/ca.crt root@masternode:/etc/docker/certs.d/masternode:5000/ca.crt
 
