@@ -15,6 +15,11 @@ https://docs.oracle.com/cd/E64747_01/E64749/html/osusg-install-master.html
 https://docs.oracle.com/cd/E64747_01/E64749/html/osusg-install-docker-setup.html
 https://docs.oracle.com/cd/E64747_01/E64749/html/osusg-install-run.html
 
+For kolla account password generate:
+https://docs.oracle.com/cd/E96260_01/E96263/html/kolla-accounts.html
+
+Install Target node
+
 ## Setup hostname
 
 ```shell
@@ -45,4 +50,14 @@ https://docs.oracle.com/cd/E64747_01/E64749/html/osusg-kollacli-commands.html#os
 Setup on multiple PC/Server need to use remote (not local)
 ```shell
 $ kollacli setdeploy remote
+```
+
+## Add target node
+
+Copy the SSH public key for the kolla user to each host and confirm that the kolla user can log in to the host using SSH keys. 
+
+```shell
+$ kollacli host add targetnode1
+$ kollacli host setup targetnode1
+
 ```
