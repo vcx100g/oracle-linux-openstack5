@@ -2,6 +2,10 @@
 
 Using Oracle Linux 7 only, Oracle Linux 8 is still not support Btrfs and Openstack
 
+Hosting 1 master node (include registry docker) and 2 target nodes
+
+You can also host 1 master node, 1 docker registry and 2 target nodes
+
 Follow instruction in:
 
 https://docs.oracle.com/cd/E64747_01/E64749/html/osusg-openstack-install.html
