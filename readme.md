@@ -26,6 +26,10 @@ https://docs.oracle.com/cd/E64747_01/E64749/html/osusg-install-node-os.html
 Then setup ssh
 https://docs.oracle.com/cd/E96260_01/E96263/html/kolla-user.html
 
+!important, must install
+```shell
+sudo yum install -y openstack-kolla-user
+```
 
 ## Setup hostname
 
