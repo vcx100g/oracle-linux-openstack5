@@ -18,7 +18,14 @@ https://docs.oracle.com/cd/E64747_01/E64749/html/osusg-install-run.html
 For kolla account password generate:
 https://docs.oracle.com/cd/E96260_01/E96263/html/kolla-accounts.html
 
-Install Target node
+## Install Target node
+
+First install all
+https://docs.oracle.com/cd/E64747_01/E64749/html/osusg-install-node-os.html
+
+Then setup ssh
+https://docs.oracle.com/cd/E96260_01/E96263/html/kolla-user.html
+
 
 ## Setup hostname
 
