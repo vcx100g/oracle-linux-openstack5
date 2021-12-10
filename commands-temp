@@ -36,6 +36,10 @@ $ cp /var/lib/registry/conf.d/domain.crt /etc/docker/certs.d/masternode:5000/ca.
 
 ## Copy the ca.crt file to all master and target nodes
 
+go to each master or target node
+sudo mkdir -p /etc/docker/certs.d/masternode:5000/
+sudo chown kolla:kolla -R /etc/docker/certs.d/masternode:500/
+
 sudo scp /etc/docker/certs.d/masternode:5000/ca.crt root@masternode:/etc/docker/certs.d/masternode:5000/ca.crt
 
 sudo scp /etc/docker/certs.d/masternode:5000/ca.crt root@targetnode1:/etc/docker/certs.d/masternode:5000/ca.crt
@@ -51,3 +55,5 @@ sudo docker run -d -p 5000:5000 --name registry --restart=always \
     registry:2
 
 sudo ./import_to_registry.sh -c masternode:5000
+
+
