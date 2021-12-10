@@ -31,6 +31,11 @@ https://docs.oracle.com/cd/E96260_01/E96263/html/kolla-user.html
 sudo yum install -y openstack-kolla-user
 ```
 
+Also need kolla folder to have permission
+```shell
+$ sudo chown kolla:kolla /usr/share/kolla
+```
+
 ## Setup hostname
 
 ```shell
