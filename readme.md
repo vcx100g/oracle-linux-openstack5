@@ -26,6 +26,9 @@ https://docs.oracle.com/cd/E64747_01/E64749/html/osusg-install-node-os.html
 Then setup ssh
 https://docs.oracle.com/cd/E96260_01/E96263/html/kolla-user.html
 
+Self signed san config
+https://support.citrix.com/article/CTX135602
+
 !important, must install
 ```shell
 sudo yum install -y openstack-kolla-user
