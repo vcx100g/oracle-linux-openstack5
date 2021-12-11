@@ -30,6 +30,13 @@ mkdir -p /var/lib/registry/conf.d
 $ cd /var/lib/registry/conf.d
 $ openssl req -newkey rsa:4096 -nodes -sha256 -keyout domain.key -x509 -days 365 -out domain.crt 
 
+### use this
+create a san.cnf with domain name
+
+openssl req -newkey rsa:4096 -nodes -sha256 -keyout domain.key -x509 -days 365 -out domain.crt -config san.cnf
+
+
+
 important, when input common name, set hostname
 Common Name (eg, your name or your server's hostname) []:masternode.localdomain
 
